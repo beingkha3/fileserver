@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  nextcloud-aio-mastercontainer:
+    image: ghcr.io/nextcloud-releases/all-in-one:latest
+    container_name: nextcloud-aio-mastercontainer
+    restart: always
+    init: true
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "8443:8443"
+    environment: 
+      - APACHE_PORT=11000 
+      - APACHE_IP_BINDING=0.0.0.0
+      - SKIP_DOMAIN_VALIDATION=true
+    volumes:
+      - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
+      - //var/run/docker.sock:/var/run/docker.sock:ro
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    # Token mode per Cloudflare dashboard
+    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    networks:
+      - nextcloud-aio
+
+volumes:
+  nextcloud_aio_mastercontainer:
+    name: nextcloud_aio_mastercontainer
+
+networks:
+  nextcloud-aio:
+    external: true
