@@ -1,0 +1,2 @@
+Placeholder to ensure this directory exists in the repository.
+This is used by NEXTCLOUD_DATADIR in docker-compose.yml for Nextcloud AIO data storage.
