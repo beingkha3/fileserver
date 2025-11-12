@@ -16,7 +16,7 @@ This workspace deploys Nextcloud All‑in‑One (AIO) and a Cloudflare Tunnel cl
    - `TUNNEL_TOKEN=...` (already set)
 
 2) Cloudflare Zero Trust → Tunnels → select your tunnel → Public Hostnames:
-   - Hostname: `kazdrive.kazrotech.org`
+   - Hostname: `your-domain.com`
    - Service: `http://nextcloud-aio-apache:11000`
    - Preserve host header: on; No TLS verify: off
    - Zone SSL/TLS mode: Full (not Flexible)
