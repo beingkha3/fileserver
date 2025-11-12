@@ -8,7 +8,7 @@ This workspace deploys Nextcloud All‑in‑One (AIO) and a Cloudflare Tunnel cl
 
 ## Prerequisites
 - Windows with Docker Desktop (Compose v2)
-- A domain on Cloudflare: `kazdrive.kazrotech.org`
+- A domain on Cloudflare: `your-domain.com`
 - A Cloudflare Zero Trust Tunnel (token-based)
 
 ## Configure
@@ -29,11 +29,11 @@ Note: The compose connects `cloudflared` to the external `nextcloud-aio` Docker 
   - `docker compose up -d`
 - Open the AIO interface locally and complete setup:
   - `https://127.0.0.1:8080` (accept self‑signed cert)
-  - Enter your domain `kazdrive.kazrotech.org`
+  - Enter your domain `your-domain.com`
   - Click Start containers and wait until all are Running
 
 ## Access
-- Public: `https://kazdrive.kazrotech.org`
+- Public: `https://your-domain.com`
 - AIO interface (internal): `https://127.0.0.1:8080`
 
 ## Customizations (optional)
